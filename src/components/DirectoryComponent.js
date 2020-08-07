@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 // import React from 'react';
 // const Component = React.Component
 import { Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle } from 'reactstrap';
+import CampsiteInfo from './CampsiteInfoComponent';
 
 class Directory extends Component {
     constructor(props) {
@@ -43,22 +44,24 @@ class Directory extends Component {
 
     onCampsiteSelect(campsite) {
         this.setState({selectedCampsite: campsite});
+        // this.state = { selectedCampsite: campsite };
+        // this.render();
     }
 
-    renderSelectedCampsite(campsite) {
-        if (campsite) {
-            return (
-                <Card>
-                    <CardImg top src={campsite.image} alt={campsite.name} />
-                    <CardBody>
-                        <CardTitle>{campsite.name}</CardTitle>
-                        <CardText>{campsite.description}</CardText>
-                    </CardBody>
-                </Card>
-            );
-        }
-        return <div />;
-    }
+    // renderSelectedCampsite(campsite) {
+    //     if (campsite) {
+    //         return (
+    //             <Card>
+    //                 <CardImg top src={campsite.image} alt={campsite.name} />
+    //                 <CardBody>
+    //                     <CardTitle>{campsite.name}</CardTitle>
+    //                     <CardText>{campsite.description}</CardText>
+    //                 </CardBody>
+    //             </Card>
+    //         );
+    //     }
+    //     return <div />;
+    // }
 
     render() {
         const directory = this.props.campsites.map(campsite => {
@@ -81,9 +84,7 @@ class Directory extends Component {
                 </div>
                 {/* <ExampleParentComponent /> */}
                 <div className="row">
-                    <div className="col-md-5 m-1">
-                        {this.renderSelectedCampsite(this.state.selectedCampsite)}
-                    </div>
+                    <CampsiteInfo campsite={this.state.selectedCampsite}/>
                 </div>
             </div>
         );
