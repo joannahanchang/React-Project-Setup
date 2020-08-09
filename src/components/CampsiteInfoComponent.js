@@ -21,6 +21,25 @@ class CampsiteInfo extends Component {
         return <div />;
     }
 
+    renderComments(comments) {
+        if (comments) {
+            return (
+                <div className="col-md-5 m-1">
+                    <h4>Comments</h4>
+                    {comments.map(comment => {
+                        return (
+                            <div key={comment.id}>
+                                <p>{comment.text}<br />
+                                -- {comment.author}, {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit'}).format(new Date(Date.parse(comment.date)))}</p>
+                            </div>
+                        );
+                    })}
+                </div>
+            );
+        }
+        return <div />
+    }
+
     render() {
         if (!this.props.campsite) {
             return (
@@ -40,29 +59,30 @@ class CampsiteInfo extends Component {
             </div>
         );
     }
-
-    renderComments(comments) {
-        if (comments) {
-            return (
-                <div className = "col-md-5 m-1">
-                    <h4>Comments</h4>
-                    {comments.map((comment) => {
-                        const formattedDate = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit'})
-                            .format(new Date(Date.parse(comment.date)));
-
-                        return (
-                            <div className ="comment">
-                                <div key={comment.id}>{comment.text}</div>
-                                <div key={comment.id}> --- {comment.author} , {formattedDate}</div>
-                            </div>
-                        )
-                    })}
-                </div>
-            );
-        }
-        return <div />;
-    }
 }
+
+//     renderComments(comments) {
+//         if (comments) {
+//             return (
+//                 <div className = "col-md-5 m-1">
+//                     <h4>Comments</h4>
+//                     {comments.map((comment) => {
+//                         const formattedDate = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit'})
+//                             .format(new Date(Date.parse(comment.date)));
+
+//                         return (
+//                             <div className ="comment">
+//                                 <div key={comment.id}>{comment.text}</div>
+//                                 <div key={comment.id}> --- {comment.author} , {formattedDate}</div>
+//                             </div>
+//                         )
+//                     })}
+//                 </div>
+//             );
+//         }
+//         return <div />;
+//     }
+// }
 
 export default CampsiteInfo;
 
