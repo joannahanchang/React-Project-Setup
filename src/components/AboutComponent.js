@@ -73,4 +73,20 @@ function About(props) {
     );
 }
 
+function RenderPartner({partner}) {
+    if (comments) {
+        return (
+            <React.Fragment>
+                <Media object src={partner.image} alt={partner.name} width="150" />
+                    <Media body className="ml-5 mb-4">
+                        <Media Heading>
+                            Partner's Name
+                        </Media>
+                            Partner's Description
+                    </Media>
+            </React.Fragment>
+        );
+    }
+    return <div />
+}
 export default About;
