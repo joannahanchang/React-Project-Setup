@@ -71,11 +71,9 @@ class CommentForm extends Component {
                                     name="rating"
                                     placeholder="1"
                                     className="form-control"
-                                    // validators={{
-                                    //     required, 
-                                    //     minLength: minLength(2),
-                                    //     maxLength: maxLength(15)
-                                    // }}
+                                    validators={{
+                                        required
+                                    }}
                                 >
                                     <option>1</option>
                                     <option>2</option>
@@ -88,17 +86,15 @@ class CommentForm extends Component {
                                     model=".rating"
                                     show="touched"
                                     component="div"
-                                    // messages={{
-                                    //     required: 'Required',
-                                    //     minLength: 'Must be at least 2 characters',
-                                    //     maxLength: 'Must be 15 characters or less'
-                                    // }}
+                                    messages={{
+                                    required: 'Required'
+                                }}
                                 />
                                 </Col>
                             </Row>
                             <Row className="form-group">
                                 <Label htmlFor="author" md={5}>Your Name</Label>
-                                <Col md={12}>
+                                <Col md={12}> 
                                     <Control.text 
                                     model=".author" 
                                     id="author" 
